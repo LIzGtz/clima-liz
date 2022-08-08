@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useState, useEffect } from "react"
+import './Weather.css'
 
 function fromKelvinToCelsius(kelvin) {
     return Math.round(kelvin - 273, 2);
@@ -59,13 +60,22 @@ function Weather() {
     }
 
     return (
-        <div>
-            <p>Clima en {weather.city}, {weather.country}</p>
-            <img src={weather.icon}></img>
-            <p>{isCelsius ? fromKelvinToCelsius(weather.temp) : fromKelvinToFahrenheit(weather.temp)} {isCelsius ? '°C' : '°F'}</p>
-            <p>Humidity: {weather.humidity}%</p>
-            <p>Pressure: {weather.pressure} mmHg</p>
-            <button onClick={setTemperaturePreference}>{isCelsius ? '°F' : '°C'}</button>
+        <div className='weather-card'>
+            <div className='title'>
+                <span>{weather.city}, {weather.country}</span>
+            </div>
+            <div className='details'>
+                <div className='col-3 weather-main'>
+                    <img src={weather.icon}></img>
+                    <p>{isCelsius ? fromKelvinToCelsius(weather.temp) : fromKelvinToFahrenheit(weather.temp)} {isCelsius ? '°C' : '°F'}</p>
+                </div>
+                <div className='col-9 weather-conditions'>
+                    <p>Humidity: {weather.humidity}%</p>
+                    <p>Pressure: {weather.pressure} mmHg</p>
+                    <button onClick={setTemperaturePreference}>{isCelsius ? '°F' : '°C'}</button>
+                </div>
+            </div>
+            
         </div>
     )
 }

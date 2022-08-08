@@ -1,0 +1,37 @@
+.weather-card {
+    padding: 2em;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 5px;
+    width: 30rem;
+}
+
+.weather-card .title {
+    font-size: 3em;
+    text-align: left;
+}
+
+.weather-card .details {
+    display: flex;
+}
+
+.weather-card .details > div {
+    margin: 1em;
+}
+
+.col-3 {
+    width: 33.33333%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.weather-main {
+    font-size: 2em;
+    font-weight: bold;
+    width: 13rem;
+}
+
+.weather-conditions {
+    text-align: left;
+}
