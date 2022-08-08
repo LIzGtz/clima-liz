@@ -14,7 +14,10 @@ function Weather() {
     const [weather, setWeather] = useState({
         temp: 273,
         city: "",
-        country: ""
+        country: "",
+        humidity: 0,
+        pressure: 0,
+        icon: "http://openweathermap.org/img/w/010.png"
     });
     const currentLocation = {
         latitude: 0,
@@ -42,7 +45,10 @@ function Weather() {
                 setWeather({
                     temp: response.data.main.temp,
                     city: response.data.name,
-                    country: response.data.sys.country
+                    country: response.data.sys.country,
+                    humidity: response.data.main.humidity,
+                    pressure: response.data.main.pressure,
+                    icon: `http://openweathermap.org/img/w/${response.data.weather[0].icon}.png`
                 });
             });
         })
@@ -55,7 +61,10 @@ function Weather() {
     return (
         <div>
             <p>Clima en {weather.city}, {weather.country}</p>
+            <img src={weather.icon}></img>
             <p>{isCelsius ? fromKelvinToCelsius(weather.temp) : fromKelvinToFahrenheit(weather.temp)} {isCelsius ? '°C' : '°F'}</p>
+            <p>Humidity: {weather.humidity}%</p>
+            <p>Pressure: {weather.pressure} mmHg</p>
             <button onClick={setTemperaturePreference}>{isCelsius ? '°F' : '°C'}</button>
         </div>
     )
